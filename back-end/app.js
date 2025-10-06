@@ -57,6 +57,20 @@ app.get('/messages/:messageId', async (req, res) => {
     })
   }
 })
+// a route to provide About page content as JSON
+app.get('/about', (req, res) => {
+  
+  const aboutData = {
+      paragraphs: [
+        "I’m a Computer Science student at NYU currently studying Agile Software Development and DevOps. I enjoy building practical web applications and learning how the pieces of a full-stack app fit together — from databases and servers to front-end user interfaces. Working with the MERN stack and small team projects has taught me how to turn ideas into working software quickly and iterate based on feedback.",
+        "I’m especially interested in improving developer workflows, test automation, and deployment pipelines so teams can move faster with confidence. Outside of coding I like to read about new web technologies, solve algorithm puzzles, and collaborate on projects that make learning tangible. My short-term goal is to deepen my backend and DevOps skills while contributing to real-world apps that deliver value."
+      ],
+    // image will be served from the front-end's public folder at /about-me.jpg
+    imageUrl: '/about-me.jpg'
+  }
+
+  res.json({ about: aboutData, status: 'all good' })
+})
 // a route to handle logging out users
 app.post('/messages/save', async (req, res) => {
   // try to save the message to the database
